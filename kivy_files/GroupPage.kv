@@ -1,0 +1,85 @@
+<GroupScreen>:
+    name: "group"
+    md_bg_color: "grey"
+
+    MDBoxLayout:
+        orientation: "vertical"
+
+        MDTopAppBar:
+            type: "small"
+            pos_hint: {"x" : 0, "top" : 1}
+
+            MDTopAppBarLeadingButtonContainer:
+
+                MDActionTopAppBarButton:
+                    icon: "arrow-left"
+                    on_release: root.go_back_to_main()
+
+            MDTopAppBarTitle:
+                text: "Group page"
+            
+            MDTopAppBarTrailingButtonContainer:
+
+                MDActionTopAppBarButton:
+                    icon: "menu"
+
+        # Expense Contents
+        MDBoxLayout:
+            padding: 40
+
+            MDScrollView:
+                MDList:
+                    id: "expense-container"
+                    spacing: 20
+
+                    MDListItem:
+                        
+                        MDListItemHeadlineText:
+                            text: "Josh's Expense"
+                        MDListItemSupportingText:
+                            text: "Michael owes me $20"
+                        MDListItemTrailingIcon:
+                            icon: "arrow-right-bold-box-outline"
+                    
+                    MDListItem:
+                        
+                        MDListItemHeadlineText:
+                            text: "Selena's expense"
+                        MDListItemSupportingText:
+                            text: "A lot of people owe me $50"
+                        MDListItemTrailingIcon:
+                            icon: "arrow-right-bold-box-outline"
+        
+        # Bottom buttons
+        MDBoxLayout:
+            orientation: "horizontal"
+            padding: 40
+
+            # Exit Group Button
+            MDAnchorLayout:
+                anchor_x: "left"
+                anchor_y: "bottom"
+
+                MDButton:
+                    style: "elevated"
+
+                    MDButtonIcon:
+                        icon: "walk"
+
+                    MDButtonText:
+                        text: "Leave"
+            
+            # Create Expense Button
+            MDAnchorLayout:
+                anchor_x: "right"
+                anchor_y: "bottom"
+
+                MDButton:
+                    style: "elevated"
+                    on_release: app.root.current = "create_expense"
+
+                    MDButtonIcon:
+                        icon: "plus"
+
+                    MDButtonText:
+                        text: "Create"

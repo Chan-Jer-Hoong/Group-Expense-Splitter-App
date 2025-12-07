@@ -1,0 +1,133 @@
+<MakeExpenseScreen>:
+    name: "create_expense"
+    md_bg_color: "grey"
+
+    MDBoxLayout:
+        md_bg_color: "white"
+        radius: 20
+        size_hint: None, None
+        size: 700, 1200
+        pos_hint: {"center_x" : 0.5, "center_y" : 0.5}
+        padding: [50, 50]
+        orientation: "vertical"
+
+        # Label for expense amount
+        MDBoxLayout:
+            orientation: "horizontal"
+            size: 500,400
+            pos_hint: {"center_x" : 0.5, "center_y" : 0.5}
+
+            MDLabel:
+                id: expense_amount
+                text: ""
+            
+            MDLabel:
+                text: "RM"
+
+        # Textfield and button to submit expense amount
+        MDBoxLayout:
+            orientation: "horizontal"
+            spacing: 15
+
+            # Money
+            MDTextField:
+                id: input_money_expense
+                input_filter: "int"
+                mode: "outlined"
+                pos_hint: {"center_x" : 0.5, "center_y" : 0.5}
+                required: True
+                size: 300, 100
+                on_error: root.disable_confirm_button(self, self.error)
+
+                MDTextFieldHintText:
+                    text: "Money"
+
+                MDTextFieldMaxLengthText:
+                    max_text_length: 4
+                
+            MDLabel:
+                text: "."
+                pos_hint: {"center_x" : 0.5, "center_y" : 0.5}
+                adaptive_size: True
+                
+            # Cents
+            MDTextField:
+                id: input_cent_expense
+                input_filter: "int"
+                mode: "outlined"
+                pos_hint: {"center_x" : 0.5, "center_y" : 0.5}
+                required: True
+                size: 200, 100
+                on_error: root.disable_confirm_button(self, self.error)
+
+                MDTextFieldHintText:
+                    text: "Cents"
+
+                MDTextFieldMaxLengthText:
+                    max_text_length: 2
+            
+            MDButton:
+                id: confirm_expense_button
+                style: "filled"
+                pos_hint: {"center_x" : 0.5, "center_y" : 0.5}
+                size: 70, 120
+                disabled: False
+                on_release: root.confirm_expense_amount()
+
+                MDButtonText:
+                    text: "Confirm"
+        
+        # Expense splitting mode
+        MDBoxLayout:
+            orientation: "horizontal"
+
+            MDLabel:
+                text: "Manual Split"
+                font_size: 20
+            CheckBox:
+                id: manual_button
+                disabled: True
+                group: "split_mode"
+                on_active: root.radio_button_select(self, self.active, "manual")
+
+            MDLabel:
+                text: "Auto Split"
+                font_size: 20
+            CheckBox:
+                id: auto_button
+                disabled: True
+                group: "split_mode"
+                on_active: root.radio_button_select(self, self.active, "auto")
+        
+        # Group member list
+        MDBoxLayout:
+            md_bg_color: "lightgrey"
+            size_hint: None, None
+            size: 600,500
+            pos_hint: {"center_x" : 0.5, "center_y" : 0.5}
+            padding: 20
+            orientation: "vertical"
+
+            MDScrollView:
+                padding: 10
+                MDList:
+                    id: group_member_list
+                    spacing: 10
+        
+        # Save the newly created expense
+        MDBoxLayout:
+            orientation: "horizontal"
+            adaptive_size: True
+            padding: 20
+
+            MDButton:
+                style: "filled"
+                pos_hint: {"center_x" : 0.5, "center_y" : 0.5}
+                on_release: root.go_to_group()
+
+                MDButtonText:
+                    text: "Add expense"
+
+                MDButtonIcon:
+                    icon: "plus"
+                    

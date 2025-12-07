@@ -1,0 +1,130 @@
+<MainScreen>:
+    name: "main_page"
+    md_bg_color: "grey"
+
+    MDBoxLayout:
+        orientation: "vertical"
+        pos_hint: {"center_x" : 0.5, "center_y" : 0.5}
+        padding: 50
+        spacing: 20
+
+        # Top bar
+        MDBoxLayout:
+            orientation: "horizontal"
+
+            AnchorLayout:
+                anchor_x: "left"
+                anchor_y: "top"
+
+                MDButton:
+                    style: "filled"
+                    pos_hint: {"center_x" : 0.5, "center_y" : 0.5}
+                    on_release: root.log_out()
+
+                    MDButtonIcon:
+                        icon: "arrow-left"
+
+                    MDButtonText:
+                        text: "Log Out"
+
+            AnchorLayout:
+                anchor_x: "right"
+                anchor_y: "top"
+
+                MDIcon:
+                    icon: "account"
+                    pos_hint: {"center_x" : 0.5, "center_y" : 0.5}
+        
+        # Account Balance
+        MDBoxLayout:
+            md_bg_color: "white"
+            radius: 20
+            size_hint: None, None
+            size: 700, 250
+            pos_hint: {"center_x" : 0.5, "center_y" : 0.5}
+            padding: 20
+            orientation: "vertical"
+
+            MDLabel:
+                text: "Account Balance:"
+                text_color: "black"
+                halign: "left"
+
+            MDBoxLayout:
+                pos_hint: {"center_x" : 0.5, "center_y" : 0.5}
+                orientation: "horizontal"
+
+                MDLabel:
+                    text: "1000"
+                    text_color: "black"
+                    
+                MDLabel:
+                    text: "RM"
+                    text_color: "black"
+                
+                MDIcon:
+                    icon: "plus-box-outline"
+                    pos_hint: {"center_x" : 0.5, "center_y" : 0.5}
+        
+        # Group Invites
+        MDBoxLayout:
+            md_bg_color: "white"
+            radius: 20
+            size_hint: None, None
+            size: 700, 300
+            pos_hint: {"center_x" : 0.5, "center_y" : 0.5}
+            padding: 20
+            orientation: "vertical"
+
+            MDLabel:
+                text: "Group Invitations:"
+                text_color: "black"
+
+            MDBoxLayout:
+                md_bg_color: "lightgrey"
+                orientation: "vertical"
+                size_hint: None, None
+                size: 650, 200
+                pos_hint: {"center_x" : 0.5, "center_y" : 0.5}
+
+                MDScrollView:
+                    MDList:
+
+        # Groups Joined
+        MDBoxLayout:
+            md_bg_color: "white"
+            radius: 20
+            size_hint: None, None
+            size: 700, 450
+            pos_hint: {"center_x" : 0.5, "center_y" : 0.5}
+            padding: 20
+            spacing: 20
+            orientation: "vertical"
+
+            MDLabel:
+                text: "Groups Joined:"
+                text_color: "black"
+
+            MDBoxLayout:
+                md_bg_color: "lightgrey"
+                size_hint: None, None
+                size: 650, 250
+                pos_hint: {"center_x" : 0.5, "center_y" : 0.5}
+                orientation: "vertical"
+                padding: 10
+
+                MDScrollView:
+                    MDList:
+                        id: group_joined_list
+                        spacing: 10
+                
+            MDButton:
+                style: "filled"
+                pos_hint: {"center_x" : 0.5, "center_y" : 0.5}
+                on_release: root.add_list_item()
+
+                MDButtonText:
+                    text: "Create Group"
+
+                MDButtonIcon:
+                    icon: "plus"

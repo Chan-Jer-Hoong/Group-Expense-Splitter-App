@@ -1,0 +1,40 @@
+<MakeGroupScreen>:
+    name: "create_group"
+    md_bg_color: "grey"
+
+    MDBoxLayout:
+        md_bg_color: "white"
+        radius: 20
+        size_hint: None, None
+        size: 900, 400
+        pos_hint: {"center_x" : 0.5, "center_y" : 0.5}
+        padding: 50
+        spacing: 30
+        orientation: "vertical"
+        
+        MDAnchorLayout:
+            anchor_x: "left"
+            anchor_y: "top"
+
+            MDLabel:
+                text: "Create Group"
+                pos_hint: {"center_x" : 0.5, "center_y" : 0.5}
+
+        MDTextField:
+            style: "outlined"
+            size_hint: None, None
+            size: 500, 110
+            pos_hint: {"center_x" : 0.5, "center_y" : 0.5}
+
+            MDTextFieldHintText:
+                text: "Group Name"
+
+        MDButton:
+            pos_hint: {"center_x" : 0.5, "center_y" : 0.5}
+            on_release: app.create_new_group()
+
+            MDButtonText:
+                text: "Create Group"
+
+            MDButtonIcon:
+                icon: "plus"

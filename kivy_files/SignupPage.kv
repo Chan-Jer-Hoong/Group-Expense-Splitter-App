@@ -1,0 +1,102 @@
+<SignupScreen>:
+    name: "signup"
+    md_bg_color: "grey"
+
+    MDBoxLayout:
+        md_bg_color: "white"
+        radius: 20
+        size_hint: None, None
+        size: 700, 1000
+        pos_hint: {"center_x" : 0.5, "center_y" : 0.5}
+        padding: [100,150,100,80]
+        spacing: 40
+        orientation: "vertical"
+
+        MDLabel:
+            text: "Sign Up"
+            halign: "center"
+            font_style: "Display"
+            role: "medium"
+            pos_hint: {"center_x" : 0.5, "center_y" : 0.5}
+            padding: [0,0,0,55]
+
+        MDTextField:
+            id: username
+            mode: "outlined"
+            pos_hint: {"center_x" : 0.5, "center_y" : 0.5}
+            adaptive_size: True
+            required: True
+            
+            MDTextFieldLeadingIcon:
+                icon: "account"
+
+            MDTextFieldHintText:
+                text: "Username"
+
+        MDTextField:
+            id: email
+            mode: "outlined"
+            pos_hint: {"center_x" : 0.5, "center_y" : 0.5}
+            adaptive_size: True
+            required: True
+            validator: "email"
+            
+            MDTextFieldLeadingIcon:
+                icon: "email"
+
+            MDTextFieldHintText:
+                text: "Email"
+        
+        MDTextField:
+            id: password
+            mode: "outlined"
+            password: True
+            pos_hint: {"center_x" : 0.5, "center_y" : 0.5}
+            adaptive_size: True
+            required: True
+            
+            MDTextFieldLeadingIcon:
+                icon: "eye-off"
+
+            MDTextFieldHintText:
+                text: "Password"
+        
+        # Sign Up Button Section
+        MDBoxLayout:
+            orientation: "horizontal"
+            adaptive_height: True
+            padding: [330,0,0,0]
+
+            MDButton:
+                style: "elevated"
+                pos_hint: {"center_x" : 0.5, "center_y" : 0.5}
+                on_release: app.register_user()
+
+                MDButtonText:
+                    text: "Sign Up"
+
+        # Log In Button Section
+        MDBoxLayout:
+            orientation: "horizontal"
+            adaptive_size: True
+
+            MDBoxLayout:
+                orientation: "vertical"
+                adaptive_size: True
+                spacing: 30
+
+                MDLabel:
+                    text: "Already have an account?"
+                    adaptive_size: True
+                    halign: "center"
+                    pos_hint: {"center_x" : 0.5, "center_y" : 0.5}
+                    font_size: 30
+
+                MDButton:
+                    style: "elevated"
+                    pos_hint: {"center_x" : 0.3, "center_y" : 0.5}
+                    on_release: 
+                        app.root.current = "login"
+
+                    MDButtonText:
+                        text: "Log In ->"
